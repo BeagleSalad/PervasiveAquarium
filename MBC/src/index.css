@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('Seaworld.webp'); /* Update with your image path */
+  background-size: cover; /* Cover the entire body */
+  background-position: center; /* Center the image */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full height to center vertically */
+  position: relative; /* Needed for the overlay */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 51, 102, 0.5); /* Deep blue overlay */
+  z-index: 0; /* Place behind other elements */
+}
+
+.container {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+  z-index: 1; /* Place above the overlay */
+  position: relative; /* Needed for stacking context */
+  max-width: 350px; /* Reduced max width for better appearance */
+  margin: auto; /* Center the container */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #003366; /* Deep ocean color */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #003366; /* Deep ocean color */
+}
+
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  width: 150px; /* Set width to 150px for shorter input boxes */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Add margin between inputs */
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0056b3; /* Deep blue */
+  color: white;
+  cursor: pointer;
+  margin-top: 15px; /* Add space above the button */
+}
+
+button:hover {
+  background-color: #004494; /* Darker blue on hover */
+}
+
+h3 {
+  color: #003366; /* Deep ocean color for the temperature logs section */
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+/* Change default text color to improve contrast */
+body,
+.container {
+  color: #000; /* Set text color to black for better readability */
+}

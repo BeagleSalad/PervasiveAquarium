@@ -1,0 +1,2 @@
+path/to/yourfile.extC:/Users/Mario/Documents/aquarium_system/aquarium_system.zip filter=lfs diff=lfs merge=lfs -text
+C:/Users/Mario/Documents/aquarium_system/aquarium_system.zip filter=lfs diff=lfs merge=lfs -text
