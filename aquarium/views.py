@@ -12,6 +12,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import HttpResponse
 from .serializers import AquariumSerializer
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+
 
 
 
@@ -54,3 +60,25 @@ class TemperatureLogViewSet(viewsets.ModelViewSet):
         # Filter temperature logs by thermostats owned by the user's aquariums
         return TemperatureLog.objects.filter(thermostat__aquarium__owner=self.request.user)
     
+class CustomLoginView(APIView):
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
+        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  # Ensure only authenticated users can access this
+def user_details(request):
+    """
+    Returns the authenticated user's details.
+    """
+    user = request.user  # The logged-in user making the request
+    return Response({
+        'id': user.id,
+        'username': user.username,
+        'email': user.email,
+    })

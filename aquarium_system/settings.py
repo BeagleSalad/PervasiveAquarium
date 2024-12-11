@@ -77,7 +77,7 @@ ROOT_URLCONF = "aquarium_system.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -99,10 +99,10 @@ WSGI_APPLICATION = "aquarium_system.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',    # Your PostgreSQL database name
-        'USER': 'postgres',  # Your PostgreSQL username
+        'NAME': 'aquarium_db',    # PostgreSQL database name
+        'USER': 'postgres',       # PostgreSQL username
         'PASSWORD': 'Kvbopf860a',
-        'HOST': 'localhost',      # Or use your database server IP/hostname
+        'HOST': 'localhost',      # Hostname
         'PORT': '5432',           # Default PostgreSQL port
     }
 }
@@ -149,3 +149,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = '/login/'  # URL for login page
+LOGIN_REDIRECT_URL = 'http://localhost:3000/'  # URL after successful login
+LOGOUT_REDIRECT_URL = '/'  # URL after logout
